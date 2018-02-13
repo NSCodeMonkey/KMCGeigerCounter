@@ -23,6 +23,8 @@ typedef NS_ENUM(NSUInteger, KMCGeigerCounterPosition) {
 @property (nonatomic, assign) UIWindowLevel windowLevel;
 @property (nonatomic, assign) KMCGeigerCounterPosition position;
 
+@property (nonatomic, assign) NSUInteger clickThresholdFrameCount;
+
 @property (nonatomic, readonly, getter = isRunning) BOOL running;
 @property (nonatomic, readonly) NSInteger droppedFrameCountInLastSecond;
 @property (nonatomic, readonly) NSInteger drawnFrameCountInLastSecond; // -1 until one second of frames have been collected

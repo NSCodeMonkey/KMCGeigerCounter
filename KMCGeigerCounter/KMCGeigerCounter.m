@@ -109,7 +109,7 @@ static NSTimeInterval const kNormalFrameDuration = 1.0 / kHardwareFramesPerSecon
 
     // Frames should be even multiples of kNormalFrameDuration.
     // If a frame takes two frame durations, we dropped at least one, so click.
-    if (1.5 < frameDuration / kNormalFrameDuration) {
+    if (frameDuration > kNormalFrameDuration * _clickThresholdFrameCount) {
         AudioServicesPlaySystemSound(self.tickSoundID);
     }
 
@@ -236,6 +236,8 @@ static NSTimeInterval const kNormalFrameDuration = 1.0 / kHardwareFramesPerSecon
     if (self) {
         _windowLevel = UIWindowLevelStatusBar + 10.0;
         _position = KMCGeigerCounterPositionMiddle;
+        
+        _clickThresholdFrameCount = 3;
 
         _meterPerfectColor = [KMCGeigerCounter colorWithHex:0x999999 alpha:1.0];
         _meterGoodColor = [KMCGeigerCounter colorWithHex:0x66a300 alpha:1.0];
