@@ -32,7 +32,9 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
 
-    [KMCGeigerCounter sharedGeigerCounter].enabled = YES;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [KMCGeigerCounter sharedGeigerCounter].enabled = YES;
+    });
 
     return YES;
 }
